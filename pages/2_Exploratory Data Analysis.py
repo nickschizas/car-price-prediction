@@ -9,8 +9,10 @@ st.set_page_config(layout="wide", page_title='EDA', page_icon=':chart_with_upwar
 # Import data
 @st.cache_resource
 def load_data():
-    DATA_PATH = r'./data/clean/data_clean_20240509.csv'
-    return pd.read_csv(DATA_PATH, sep=';')
+    DATA_PATH = r'./data/clean/data_clean_20240811.csv'
+    loaded_data = pd.read_csv(DATA_PATH, sep=';')
+    loaded_data.drop(['FullName', 'ProductionDate'], axis=1, inplace=True)
+    return loaded_data
 
 data = load_data()
 # Shape of the data
